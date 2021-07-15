@@ -1,4 +1,4 @@
-# ServiceSde
+# ServiceSide
 A platform for organizations to post about volunteer and outreach oppertunities.
 
 ## Development Setup Step
