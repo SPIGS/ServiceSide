@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1> Contact us </h1>
+<p> Need assistance? </p>
+<p> Call 1-877-On Your Side (1-877-669-6877) or fill out the form below </p>
+
+
+<p>
+  <strong>Subject:</strong>
+  <%= @contact.subject %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @contact.message %>
+</p>
+
+<%= link_to 'Edit', edit_contact_path(@contact) %> |
+<%#= link_to 'Back', contacts_path %>
