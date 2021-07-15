@@ -54,8 +54,63 @@
     <% end %>
   </div>
 
+  <div>
+    <input type="checkbox" id="org-check" name="org-check" value="1">
+    <label for="org-check">I represent an organization</label>
+  </div>
+  <div>
+  
+  </div>
+
+  <div id="org-field"  style="display:none;">
+  <h2>Organization Information</h2>
+    <div class="field">
+      <%= f.label :organization, 'Organization'%><br>
+      <%= f.text_field :organization%>
+      <% if @user.errors.full_messages_for(:organization).any? %>
+        <% @user.errors.full_messages_for(:organization).each do |error| %>
+          <p class="error"> <%= error %> </p>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <%= f.label :address, 'Address'%><br>
+      <%= f.text_field :address%>
+      <% if @user.errors.full_messages_for(:address).any? %>
+        <% @user.errors.full_messages_for(:address).each do |error| %>
+          <p class="error"> <%= error %> </p>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="field" >
+      <%= f.label :orginfo, "Organization Information"%><br>
+      <%= f.text_area :orginfo, :cols => 50, :rows => 10%>
+      <% if @user.errors.full_messages_for(:orginfo).any? %>
+        <% @user.errors.full_messages_for(:orginfo).each do |error| %>
+          <p class="error"> <%= error %> </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
   <div class="field">
     <%= f.submit %>
   </div>
 <%end%>
 </div>
+
+<script>
+  var org_check = document.getElementById("org-check");
+
+  org_check.addEventListener('change', function () {
+    if (this.checked) {
+        var org_field = document.getElementById("org-field");
+        org_field.style.display = "block";
+    } else {
+        var org_field = document.getElementById("org-field");
+        org_field.style.display = "none";
+    }
+  });
+</script>

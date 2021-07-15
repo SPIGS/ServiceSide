@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   skip_before_action :authorized, only: [:new, :create]
-  before_action :set_user, only: %i[ show edit update destroy ]
 
   # GET /users or /users.json
   def index
@@ -14,6 +13,7 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    
   end
 
   # GET /users/1/edit
@@ -23,8 +23,24 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
-    session[:user_id] = @user.id
-    redirect_to '/welcome'
+    if @user.valid?
+      @user.save
+      session[:user_id] = @user.id
+      
+      if !@user.organization.nil?
+        @organization = Organization.new
+        @organization.name = @user.organization
+        @organization.address = @user.address
+        @organization.info = @user.orginfo
+        @organization.save
+      end
+
+      redirect_to "/welcome"
+    else
+      puts @user.errors.full_messages_for(:fname)
+       render :new
+       @user.errors.clear
+     end
   end
 
   # PATCH/PUT /users/1 or /users/1.json
@@ -50,13 +66,8 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
-
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:email, :password_digest, :fname, :lastname)
+      params.require(:user).permit(:email, :password, :fname, :lname, :organization, :address, :orginfo)
     end
 end
