@@ -1,3 +1,61 @@
 <h1>New User</h1>
 
-The signup page will be here: "views/users/new"
+
+<div>
+
+<%= form_for @user do |f|%>
+  <div class="field" >
+    <%= f.label :email%><br>
+    <%= f.text_field :email%> 
+    <% if @user.errors.full_messages_for(:email).any? %>
+      <% @user.errors.full_messages_for(:email).each do |error| %>
+        <p class="error"> <%= error %> </p>
+      <% end %>
+    <% end %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :fname, 'First Name'%><br>
+    <%= f.text_field :fname%>
+    <% if @user.errors.full_messages_for(:fname).any? %>
+      <% @user.errors.full_messages_for(:fname).each do |error| %>
+        <p class="error"> <%= error %> </p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="field" >
+    <%= f.label :lname, 'Last Name'%><br>
+    <%= f.text_field :lname%>
+    <% if @user.errors.full_messages_for(:lname).any? %>
+      <% @user.errors.full_messages_for(:lname).each do |error| %>
+        <p class="error"> <%= error %> </p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password%><br>
+    <%= f.password_field :password%>
+    <% if @user.errors.full_messages_for(:password).any? %>
+      <% @user.errors.full_messages_for(:password).each do |error| %>
+        <p class="error"> <%= error %> </p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation%><br>
+    <%= f.password_field :password_confirmation%>
+    <% if @user.errors.full_messages_for(:password_confirmation).any? %>
+      <% @user.errors.full_messages_for(:password_confirmation).each do |error| %>
+        <p class="error"> <%= error %> </p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.submit %>
+  </div>
+<%end%>
+</div>
