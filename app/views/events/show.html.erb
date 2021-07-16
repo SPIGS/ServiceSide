@@ -38,13 +38,12 @@
 
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_event_path(@event), style:"color:white" %> |
-<%= link_to 'Back', events_path, style:"color:white" %>
-
 <h2><%= @event.name %></h2>
 <p>
 <%= @event.desc%>
-</p
+<%= @event.num_needed%>
+<%= @event.eventdate%>
+</p>
 
 <footer>
   <p style = "text-align: center; color: #346094"> Team U+1F5FF </p>

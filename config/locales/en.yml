@@ -40,6 +40,7 @@ en:
         name: "Name"
         desc: "Description"
         num_needed: "Number of Volunteers"
+        eventdate: "Date and Time of Event"
     errors:
       models:
         user:
@@ -58,4 +59,6 @@ en:
             desc:
               blank: "is required."
             num_needed:
+              blank: "is required."
+            eventdate:
               blank: "is required."
