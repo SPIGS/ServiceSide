@@ -1,0 +1,30 @@
+<h1>New Event</h1>
+
+<div>
+
+<%= form_for @event do |f|%>
+  <div class="field" >
+    <%= f.label :name, "Event Name"%><br>
+    <%= f.text_field :name%> 
+    <% if @event.errors.full_messages_for(:name).any? %>
+      <% @event.errors.full_messages_for(:name).each do |error| %>
+        <p class="error"> <%= error %> </p>
+      <% end %>
+    <% end %>
+  </div>
+
+<div class="field" >
+    <%= f.label :desc, "Event Information"%><br>
+    <%= f.text_area :desc, :cols => 50, :rows => 10%>
+    <% if @event.errors.full_messages_for(:desc).any? %>
+    <% @event.errors.full_messages_for(:desc).each do |error| %>
+        <p class="error"> <%= error %> </p>
+    <% end %>
+    <% end %>
+</div>
+
+  <div class="field">
+    <%= f.submit %>
+  </div>
+<%end%>
+</div>

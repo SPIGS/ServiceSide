@@ -1,0 +1,32 @@
+<h1><%= @org.name %></h1>
+<h2>Location: <%= @org.address%></h2>
+<h3><%=@org.info%></h3>
+<% if @works_here == true %>
+    <%= link_to "Create event", '/create_event'%>
+<% end %>
+
+<div>
+    <h3>Events</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <%if !@events.nil?%>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= link_to 'Show', event %></td>
+        <td><%=event.name%></td>
+        <td><%=event.num_needed%></td>
+      </tr>
+    <% end %>
+    <%else%>
+        No events
+    <%end%>
+  </tbody>
+</table>
+</div>

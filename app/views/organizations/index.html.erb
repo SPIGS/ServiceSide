@@ -1,0 +1,21 @@
+<h1>Organizations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @organizations.each do |org| %>
+      <tr>
+        <td><%= link_to 'Show', org %></td>
+        <td><%= org.name%></td>
+        <td><%= org.info%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
