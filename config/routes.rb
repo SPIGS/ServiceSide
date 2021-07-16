@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :contacts
   resources :organizations
   resources :events
   resources :users , only: [:new, :create]
@@ -7,6 +8,8 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   get 'welcome',to:'sessions#welcome'
   get 'signup', to: 'users#new'
+  get 'contact', to: 'contacts#new'
+  get 'home', to: 'home#index'
   get 'organization/:id', to: 'organizations#show'
   get 'create_event', to: 'events#new'
   post 'create_event', to: 'events#create'
