@@ -31,7 +31,7 @@ class EventsController < ApplicationController
       @event.save
       redirect_to @event
     else
-      puts @event.errors.full_messages_for(:fname)
+      puts @event.errors.full_messages_for(:name)
        render :new
        @event.errors.clear
     end
@@ -67,6 +67,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:name, :org_id, :desc, :num_needed)
+      params.require(:event).permit(:name, :org_id, :desc, :num_needed, :eventdate)
     end
 end
