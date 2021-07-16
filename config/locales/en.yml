@@ -30,4 +30,38 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      user:
+        fname: "First name"
+        lname: "Last name"
+        email: "Email" 
+      event:
+        name: "Name"
+        desc: "Description"
+        num_needed: "Number of Volunteers"
+        eventdate: "Date and Time of Event"
+      response:
+        user_id: "User ID"
+        event_id: "Event ID"
+    errors:
+      models:
+        user:
+          attributes:
+            fname:
+              blank: "is required."
+            lname:
+              blank: "is required."
+            email:
+              blank: "is required."
+              taken: "is already taken."
+        event:
+          attributes:
+            name:
+              blank: "is required."
+            desc:
+              blank: "is required."
+            num_needed:
+              blank: "is required."
+            eventdate:
+              blank: "is required."

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light py-3" style = "background-color: #FFFFFF">
+  <div class="container-fluid" style="font-size:30px">
+  <a class="navbar-brand" href="#"><img src = "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/v1448128738/cl28wyysskerya6m752m.png" style="width:40px; height:40px"></a> 
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+ <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <% if logged_in?%>
+          <%= link_to "Organizations", '/organizations', method: :get%>
+          <%= link_to "Events", '/events', method: :get%>
+          <%= link_to "Contact us", '/contacts/new', method: :get%>
+          <%= link_to "Logout", '/logout', method: :delete%>
+        <% else %>
+          <%= link_to "Login", '/login', method: :get%>
+          <%= link_to "Sign Up", '/signup', method: :get%>
+          <%= link_to "Contact Us", '/contacts/new', method: :get%>
+        <% end %>
+      </div>
+  </div>
+  </div>
+</nav>
+
+<style>
+body {
+  background-color: #346094;
+}
+p, h1, h2, h3,table {
+  color:white;
+}
+</style>
+
+<h1><%= @org.name %></h1>
+<h2>Location: <%= @org.address%></h2>
+<h3><%=@org.info%></h3>
+<% if @works_here == true %>
+    <%= link_to "Create event", '/create_event'%>
+<% end %>
+
+<div>
+    <h3>Events</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <%if !@events.blank?%>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= link_to 'Show', event %></td>
+        <td><%=event.name%></td>
+        <td><%=event.num_needed%></td>
+      </tr>
+    <% end %>
+    <%else%>
+        <% if @works_here == true %>
+          Your organization has not created any events.
+        <%else%>
+          This organization has not created any events.
+        <%end%>
+    <%end%>
+  </tbody>
+</table>
+</div>
+</script>
+
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>

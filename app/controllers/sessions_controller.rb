@@ -7,9 +7,16 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
+      redirect_to '/welcome'
     else
       redirect_to '/welcome'
     end
+  end
+  
+  def destroy
+    session.delete(:user_id)
+    @current_user = nil
+    redirect_to '/welcome'
   end
 
   def login

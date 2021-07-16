@@ -19,18 +19,20 @@ body {
   background-color: #346094;
 }
 
-.logo{position: absolute; right: 25%; top: 10%;}
 
-.volpic{position: absolute; bottom: 10%; width: 40%; right: 10%;}
-
-h1 {position: absolute; top: 12%;left:10%; font-size: 600%; color: white; font-family: helvetica;}
+h1 {font-size: 600%; color: white; font-family: helvetica;text-align: center}
 
 
-p{position: absolute; bottom: 50%; left: 10%; font-family: helvetica; font-size: 200%; color: white;}
+p{font-family: helvetica; font-size: 200%; color: white; text-align: center}
+
+img {display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;}
 
 </style>
 
-<nav class="navbar navbar-expand-lg navbar-dark py-3" style = "background-color: #346094">
+<nav class="navbar navbar-expand-lg navbar-light py-3" style = "background-color: #FFFFFF">
   <div class="container-fluid" style="font-size:30px">
   <a class="navbar-brand" href="#"><img src = "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/v1448128738/cl28wyysskerya6m752m.png" style="width:40px; height:40px"></a> 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,21 +40,30 @@ p{position: absolute; bottom: 50%; left: 10%; font-family: helvetica; font-size:
   </button>
  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-link active" href="#">Features</a>
-        <a class="nav-link active" href="#">Pricing</a>
+        <% if logged_in?%>
+          <%= link_to "Organizations", '/organizations', method: :get%>
+          <%= link_to "Events", '/events', method: :get%>
+          <%= link_to "Contact us", '/contacts/new', method: :get%>
+          <%= link_to "Logout", '/logout', method: :delete%>
+        <% else %>
+          <%= link_to "Login", '/login', method: :get%>
+          <%= link_to "Sign Up", '/signup', method: :get%>
+          <%= link_to "Contact Us", '/contacts/new', method: :get%>
+        <% end %>
       </div>
   </div>
   </div>
 </nav>
 
-<img src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/v1448128738/cl28wyysskerya6m752m.png" alt="Nationwide Logo" class="logo">
-
-<img src="https://i.ytimg.com/vi/K0G3Fzq3XyM/maxresdefault.jpg" alt="Nationwide Logo" class="volpic">
-
 <h1>Service Side</h1>
 
 <p>Here at Nationwide we value giving back to our local communities through the form of volunteer work. <br> Apply to obtain volunteers (Nationwiders) for your organizations next effort today!</p>
+
+<img src="https://i.ytimg.com/vi/K0G3Fzq3XyM/maxresdefault.jpg" alt="Nationwide Logo" class="volpic">
+ 
+<footer>
+  <p style = "text-align: center; color: #346094"> Team U+1F5FF </p>
+</footer>
 
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
