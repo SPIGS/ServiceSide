@@ -16,7 +16,7 @@
   </thead>
 
   <tbody>
-  <%if !@events.nil?%>
+  <%if !@events.blank?%>
     <% @events.each do |event| %>
       <tr>
         <td><%= link_to 'Show', event %></td>
@@ -25,7 +25,11 @@
       </tr>
     <% end %>
     <%else%>
-        No events
+        <% if @works_here == true %>
+          Your organization has not created any events.
+        <%else%>
+          This organization has not created any events.
+        <%end%>
     <%end%>
   </tbody>
 </table>

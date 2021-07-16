@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.valid?
       
-      if !@user.organization.nil?
+      if !@user.organization.blank?
         @user.reps_org = true;
         @organization = Organization.new
         @organization.name = @user.organization
@@ -37,6 +37,9 @@ class UsersController < ApplicationController
         redirect_to "/organization/#{@organization.id}"
       else
         @user.reps_org = false
+        @user.save
+        session[:user_id] = @user.id
+        redirect_to "/events"
       end
       
     else
