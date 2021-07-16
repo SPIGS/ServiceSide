@@ -41,6 +41,9 @@ en:
         desc: "Description"
         num_needed: "Number of Volunteers"
         eventdate: "Date and Time of Event"
+      response:
+        user_id: "User ID"
+        event_id: "Event ID"
     errors:
       models:
         user:
