@@ -43,6 +43,7 @@ img {display: block;
         <% if logged_in?%>
           <%= link_to "Organizations", '/organizations', method: :get%>
           <%= link_to "Events", '/events', method: :get%>
+          <%= link_to "Contact us", '/contacts/new', method: :get%>
           <%= link_to "Logout", '/logout', method: :delete%>
         <% else %>
           <%= link_to "Login", '/login', method: :get%>
