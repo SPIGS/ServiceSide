@@ -21,16 +21,9 @@
   </button>
  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-      <% if logged_in?%>
-          <%= link_to "Organizations", '/organizations', method: :get%>
-          <%= link_to "Events", '/events', method: :get%>
-          <%= link_to "Contact us", '/contacts/new', method: :get%>
-          <%= link_to "Logout", '/logout', method: :delete%>
-        <% else %>
           <%= link_to "Login", '/login', method: :get%>
           <%= link_to "Sign Up", '/signup', method: :get%>
           <%= link_to "Contact Us", '/contacts/new', method: :get%>
-        <% end %>
       </div>
   </div>
   </div>
