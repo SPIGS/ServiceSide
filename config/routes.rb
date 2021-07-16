@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post 'create_response/:event_id', to: 'responses#create'
   resources :contacts
   resources :organizations
   resources :events

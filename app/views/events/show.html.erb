@@ -46,11 +46,17 @@
 <p id="notice"><%= notice %></p>
 
 <h2><%= @event.name %></h2>
-<p>
+<p style="style:white;">
 <%= @event.desc%>
 <%= @event.num_needed%>
 <%= @event.eventdate%>
 </p>
+
+<% if !current_user.reps_org%>
+<div>
+<%= button_to "Respond", {:controller => "responses", :action => "create", :event_id => @event.id}, :method => :post%>
+</div>
+<% end %>
 
 <footer>
   <p style = "text-align: center; color: #346094"> Team U+1F5FF </p>
