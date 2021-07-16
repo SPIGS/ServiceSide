@@ -48,8 +48,18 @@ body {
     <% if @event.errors.full_messages_for(:name).any? %>
       <% @event.errors.full_messages_for(:name).each do |error| %>
         <p class="error"> <%= error %> </p>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+  
+<div class="form-group" >
+      <%= f.label :desc, "Event Information"%><br>
+      <%= f.text_area :desc, :cols => 50, :rows => 10%>
+      <% if @event.errors.full_messages_for(:desc).any? %>
+      <% @event.errors.full_messages_for(:desc).each do |error| %>
+          <p class="error"> <%= error %> </p>
+      <% end %>
+      <% end %>
   </div>
 
 <div class="form-group" >
@@ -61,6 +71,27 @@ body {
     <% end %>
     <% end %>
 </div>
+
+  <div class="form-group" >
+    <%= f.label :num_needed, "Number of Volunteers Needed"%><br>
+      <%= f.number_field :num_needed, min: 1, step: 1%>
+      <% if @event.errors.full_messages_for(:num_needed).any? %>
+      <% @event.errors.full_messages_for(:num_needed).each do |error| %>
+          <p class="error"> <%= error %> </p>
+      <% end %>
+      <% end %>
+  <div>
+
+  <div class="form-group" >
+    <%= f.label :eventdate, "Date and Time of Event"%><br>
+      <%= f.datetime_select :eventdate%>
+      <% if @event.errors.full_messages_for(:eventdate).any? %>
+      <% @event.errors.full_messages_for(:eventdate).each do |error| %>
+          <p class="error"> <%= error %> </p>
+      <% end %>
+      <% end %>
+  <div>
+
 
   <div class="field">
     <%= f.submit "Submit", {class:"btn btn-default"}%>
