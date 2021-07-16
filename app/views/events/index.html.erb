@@ -10,6 +10,7 @@
   </thead>
 
   <tbody>
+  <% if !@events.blank?%>
     <% @events.each do |event| %>
       <tr>
         <td><%= link_to 'Show', event %></td>
@@ -17,9 +18,13 @@
         <td><%= event.num_needed%></td>
       </tr>
     <% end %>
+  <% else %>
+    There are no events.
+  <%end%>
   </tbody>
 </table>
 
 <br>
-
+<% if current_user.reps_org%>
 <%= link_to 'New Event', new_event_path %>
+<% end %>

@@ -8,6 +8,7 @@
   </thead>
 
   <tbody>
+  <% if !@organizations.blank?%>
     <% @organizations.each do |org| %>
       <tr>
         <td><%= link_to 'Show', org %></td>
@@ -15,6 +16,9 @@
         <td><%= org.info%></td>
       </tr>
     <% end %>
+  <%else%>
+    There are no organizations.
+  <%end%>
   </tbody>
 </table>
 
