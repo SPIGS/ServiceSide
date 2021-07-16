@@ -58,16 +58,6 @@ body {
         <% end %>
       <% end %>
     </div>
-  
-<div class="form-group" >
-      <%= f.label :desc, "Event Information"%><br>
-      <%= f.text_area :desc, :cols => 50, :rows => 10%>
-      <% if @event.errors.full_messages_for(:desc).any? %>
-      <% @event.errors.full_messages_for(:desc).each do |error| %>
-          <p class="error"> <%= error %> </p>
-      <% end %>
-      <% end %>
-  </div>
 
 <div class="form-group" >
     <%= f.label :desc, "Event Information"%><br>

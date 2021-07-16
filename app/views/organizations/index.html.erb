@@ -9,7 +9,6 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light py-3" style = "background-color: #FFFFFF">
@@ -20,9 +19,16 @@
   </button>
  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a style = "color: #346094" class="nav-link active" aria-current="page" href="welcome.html.erb">Home</a>
-        <a style = "color: #346094" class="nav-link active" href="login.html.erb">Login/SignUp</a>
-        <a style = "color: #346094" class="nav-link active" href="#">Contact Us</a>
+       <% if logged_in?%>
+          <%= link_to "Organizations", '/organizations', method: :get%>
+          <%= link_to "Events", '/events', method: :get%>
+          <%= link_to "Contact us", '/contacts/new', method: :get%>
+          <%= link_to "Logout", '/logout', method: :delete%>
+        <% else %>
+          <%= link_to "Login", '/login', method: :get%>
+          <%= link_to "Sign Up", '/signup', method: :get%>
+          <%= link_to "Contact Us", '/contacts/new', method: :get%>
+        <% end %>
       </div>
   </div>
   </div>
@@ -31,6 +37,9 @@
 <style>
 body {
   background-color: #346094;
+}
+p, h1, h2, table {
+  color:white;
 }
 </style>
 
