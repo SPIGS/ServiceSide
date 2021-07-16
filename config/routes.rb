@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :homepages
   resources :users , only: [:new, :create]
   get 'login', to: 'sessions#new'
   post 'login', to:'sessions#create'
